@@ -2,6 +2,7 @@ package tuto.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Amine Jendoubi on 26/09/2017.
@@ -15,6 +16,16 @@ public class Room implements Serializable {
     @OneToOne(cascade= CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Occupant occupant;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "roomId")
+    private List<KeyCard> keyCards;
+
+    public List<KeyCard> getKeyCards() {
+        return keyCards;
+    }
+
+    public void setKeyCards(List<KeyCard> keyCards) {
+        this.keyCards = keyCards;
+    }
 
     public RoomId getId() {
         return id;

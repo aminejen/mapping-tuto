@@ -1,7 +1,6 @@
 package tuto.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -13,6 +12,16 @@ public class Occupant {
     private RoomId roomId;
     private Date checkinDate;
     private Date checkoutDate;
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private Room room;
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
 
     public RoomId getRoomId() {
         return roomId;

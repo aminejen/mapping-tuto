@@ -16,8 +16,19 @@ public class Room implements Serializable {
     @OneToOne(cascade= CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Occupant occupant;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "roomId")
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "roomId")
     private List<KeyCard> keyCards;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Window> windows;
+
+
+    public List<Window> getWindows() {
+        return windows;
+    }
+
+    public void setWindows(List<Window> windows) {
+        this.windows = windows;
+    }
 
     public List<KeyCard> getKeyCards() {
         return keyCards;

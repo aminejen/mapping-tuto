@@ -57,6 +57,10 @@ public class RoomRepositoryTests {
         room.setWidth(5.63);
 
         roomRepository.save(room);
+        Room roomDB = roomRepository.findOne(roomId);
+        List<KeyCard> list = roomDB.getKeyCards();
+        System.out.println(list);
+
     }
 
 }
